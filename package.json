@@ -1,0 +1,19 @@
+{
+  "name": "@openmrs/module-config-helper-cli",
+  "version": "1.0.0",
+  "description": "Generates documentation about module configurability",
+  "main": "index.js",
+  "bin": {
+    "config-autodoc": "bin/cli.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Brandon Istenes (bistenes@pih.org)",
+  "license": "MIT",
+  "dependencies": {
+    "commander": "^4.1.1",
+    "fs-extra": "^8.1.0",
+    "systemjs": "^6.2.5"
+  }
+}
