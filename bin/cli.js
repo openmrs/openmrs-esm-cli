@@ -7,9 +7,8 @@ const autodoc = require("../lib/autodoc.js");
 program.version(version);
 program.option("-o, --outfile <outfile.md>", "change the output file", "README.md");
 program.option(
-  "-p, --package <package>",
-  "path to package.json file",
-  "package.json"
+  "-e, --entrypoint <entrypoint.js>",
+  "path to app entrypoint"
 );
 program.option(
   "--cwd <cwd>",
