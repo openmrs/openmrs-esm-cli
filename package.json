@@ -1,5 +1,5 @@
 {
-  "name": "@openmrs/module-config-helper-cli",
+  "name": "@openmrs/config-cli",
   "version": "1.0.0",
   "description": "Generates documentation about module configurability",
   "main": "index.js",
