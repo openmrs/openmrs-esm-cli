@@ -7,7 +7,7 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "Launch Program",
+            "name": "Launch from Workspace",
             "skipFiles": [
                 "<node_internals>/**",
                 "node_modules/ts-node/**",
@@ -15,6 +15,19 @@
             ],
             "program": "${workspaceFolder}/bin/cli.js",
             "args": ["-e", "${workspaceFolder}/../openmrs-esm-home/src/root.component.tsx"]
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Launch from Login",
+            "skipFiles": [
+                "<node_internals>/**",
+                "node_modules/ts-node/**",
+                "node_modules/typescript/**"
+            ],
+            "cwd": "${workspaceFolder}/../openmrs-esm-login/",
+            "program": "${workspaceFolder}/bin/cli.js",
+            "args": ["-e", "src/root.component.tsx"]
         }
     ]
 }

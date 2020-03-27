@@ -23,5 +23,6 @@ program.log = (...args) => console.log(...args);
 autodoc(program)
   .catch(err => {
     console.error(err);
+    console.error(err.stack)
     process.exit(1);
   });

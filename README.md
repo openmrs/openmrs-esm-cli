@@ -9,3 +9,4 @@ Try checking it out alongside `openmrs-esm-home/` and executing
 ```
 ./bin/cli.js -e ../openmrs-esm-home/src/root.component.tsx
 ```
+
