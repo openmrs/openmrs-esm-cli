@@ -4,17 +4,18 @@ const program = require("commander");
 const version = require("../package.json").version;
 const autodoc = require("../lib/autodoc.js");
 
+program.description("Generate Markdown documentation for a config schema")
 program.version(version);
 program.option("-o, --outfile <outfile.md>", "change the output file", "README.md");
 program.option(
   "-e, --entrypoint <entrypoint.js>",
-  "path to app entrypoint"
+  "path to file containing defineConfigSchema call",
+  "src/root.component.tsx"
 );
 program.option(
   "--cwd <cwd>",
   "override the path to use as the current working directory"
 );
-program.option("-v, --verbose", "print lots of stuff");
 
 program.parse(process.argv);
 

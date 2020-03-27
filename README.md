@@ -2,11 +2,17 @@
 
 Scripts supporting openmrs-esm-module-config.
 
-First project: `config-autodoc`, which generates documentation for
-how to configure a module based on its config schema.
+## config-autodoc
 
-Try checking it out alongside `openmrs-esm-home/` and executing
 ```
-./bin/cli.js -e ../openmrs-esm-home/src/root.component.tsx
-```
+npx config-autodoc --help
 
+Generate Markdown documentation for a config schema
+
+Options:
+  -V, --version                     output the version number
+  -o, --outfile <outfile.md>        change the output file (default: "README.md")
+  -e, --entrypoint <entrypoint.js>  path to file containing defineConfigSchema call (default: "src/root.component.tsx")
+  --cwd <cwd>                       override the path to use as the current working directory
+  -h, --help                        output usage information
+```
