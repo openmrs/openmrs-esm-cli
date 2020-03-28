@@ -1,6 +1,6 @@
 {
   "name": "@openmrs/config-cli",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Generates documentation about module configurability",
   "main": "index.js",
   "bin": {
