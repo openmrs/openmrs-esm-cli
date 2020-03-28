@@ -1,6 +1,6 @@
 module.exports = {
   transform: {
-    "^.+\\.js$": "babel-jest"
+    "^.+\\.js$": "babel-jest",
   },
-  watchPathIgnorePatterns: ["<rootDir>/__test__/fixtures/"]
-}
+  watchPathIgnorePatterns: ["<rootDir>/__test__/fixtures/"],
+};

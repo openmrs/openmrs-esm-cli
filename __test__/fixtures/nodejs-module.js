@@ -1,7 +1,7 @@
 var {
   defineConfigSchema,
   validators,
-  validator
+  validator,
 } = require("@openmrs/esm-module-config");
 
 defineConfigSchema("nodejs-module", {
@@ -10,7 +10,7 @@ defineConfigSchema("nodejs-module", {
     validators: [
       validators.isString,
       validators.isBoolean,
-      validator(x => true, "it's ok")
-    ]
-  }
+      validator((x) => true, "it's ok"),
+    ],
+  },
 });

@@ -2,7 +2,7 @@ import React from "react";
 import {
   defineConfigSchema,
   validators,
-  validator
+  validator,
 } from "@openmrs/esm-module-config";
 
 defineConfigSchema("tsx-module", {
@@ -11,7 +11,7 @@ defineConfigSchema("tsx-module", {
     validators: [
       validators.isString,
       validators.isBoolean,
-      validator(x => true, "it's ok")
-    ]
-  }
+      validator((x) => true, "it's ok"),
+    ],
+  },
 });

@@ -16,7 +16,7 @@ describe("autodoc", () => {
   it("should extract schema from a module and then update that schema", () => {
     const fixture = __dirname + "/fixtures/tsx-module.tsx";
     execSync(`./bin/cli.js -e ${fixture} -o ${readmePath}`, {
-      encoding: "utf-8"
+      encoding: "utf-8",
     });
     const result = fs.readFileSync(readmePath, "utf-8");
     const expectedFoo = new RegExp(initialReadme + "[\\s\\S]*" + "foo.*tsx");
@@ -26,7 +26,7 @@ describe("autodoc", () => {
     execSync('sed -i "s/foo/bar/" ' + fixture);
     try {
       execSync(`./bin/cli.js -e ${fixture} -o ${readmePath}`, {
-        encoding: "utf-8"
+        encoding: "utf-8",
       });
       const result = fs.readFileSync(readmePath, "utf-8");
       const expectedBar = new RegExp(initialReadme + "[\\s\\S]*" + "bar.*tsx");
@@ -41,7 +41,7 @@ describe("autodoc", () => {
   it("can extract from a nodejs module", () => {
     const fixture = __dirname + "/fixtures/nodejs-module.js";
     execSync(`./bin/cli.js -e ${fixture} -o ${readmePath}`, {
-      encoding: "utf-8"
+      encoding: "utf-8",
     });
     const result = fs.readFileSync(readmePath, "utf-8");
     const expectedFoo = new RegExp(initialReadme + "[\\s\\S]*" + "foo.*js");
@@ -50,4 +50,7 @@ describe("autodoc", () => {
 
   test.todo("can extract from an ES6 JS module");
   test.todo("can extract a schema that is split across files");
+  test.todo("includes validator explanations");
+  test.todo("includes 'description' key");
+  test.todo("reasonable formatting for default arrays");
 });

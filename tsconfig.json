@@ -1,12 +1,12 @@
 {
-	"compilerOptions": {
-		"allowJs": true,
-		"allowSyntheticDefaultImports": true,
-		"esModuleInterop": true,
-		"experimentalDecorators": true,
-		"jsx": "react",
-		"moduleResolution": "Node",
-		"skipLibCheck": true,
-		"target": "esnext"
-	}
+  "compilerOptions": {
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "jsx": "react",
+    "moduleResolution": "Node",
+    "skipLibCheck": true,
+    "target": "esnext"
+  }
 }

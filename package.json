@@ -7,7 +7,14 @@
     "config-autodoc": "bin/cli.js"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "eslint bin lib",
+    "prettier": "prettier --write './**'",
+    "test": "jest"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged && concurrently '$npm_execpath run lint' '$npm_execpath run test'"
+    }
   },
   "author": "Brandon Istenes (bistenes@pih.org)",
   "license": "OpenMRS <https://openmrs.org/license/>",
@@ -23,6 +30,13 @@
     "@babel/preset-env": "^7.9.0",
     "@babel/runtime": "^7.9.2",
     "@types/jest": "^25.1.4",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.10.1",
+    "eslint-plugin-prettier": "^3.1.2",
+    "husky": "^4.2.3",
+    "prettier": "^2.0.2",
+    "pretty-quick": "^2.0.1",
     "rimraf": "^3.0.2"
   }
 }
