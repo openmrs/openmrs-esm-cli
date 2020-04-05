@@ -4,6 +4,7 @@ import {
   validators,
   validator,
 } from "@openmrs/esm-module-config";
+import style from "tsx-module.css";
 
 defineConfigSchema("tsx-module", {
   foo: {
