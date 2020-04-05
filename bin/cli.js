@@ -17,6 +17,11 @@ program.option(
   "src/root.component.tsx"
 );
 program.option(
+  "-d, --dependencies <./schema>",
+  "comma-separated list of imports which are used in defineConfigSchema",
+  ""
+);
+program.option(
   "--cwd <cwd>",
   "override the path to use as the current working directory"
 );

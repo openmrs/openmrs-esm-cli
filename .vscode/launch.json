@@ -47,7 +47,12 @@
       // "env": { "TS_NODE_DEBUG": "y" },
       "cwd": "${workspaceFolder}/../openmrs-esm-patient-chart/",
       "program": "${workspaceFolder}/bin/cli.js",
-      "args": ["-e", "src/root.component.tsx"]
+      "args": [
+        "-e",
+        "src/root.component.tsx",
+        "-d",
+        "./openmrs-esm-patient-chart-schema,./view-components/core-views"
+      ]
     }
   ]
 }
