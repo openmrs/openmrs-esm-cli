@@ -13,7 +13,7 @@ describe("autodoc", () => {
     fs.writeFileSync(readmePath, initialReadme);
   });
 
-  it("should extract schema from a module and then update that schema", () => {
+  it("should extract schema from a tsx module and then update that schema, and ignore css imports", () => {
     const fixture = __dirname + "/fixtures/tsx-module.tsx";
     execSync(`./bin/cli.js -e ${fixture} -o ${readmePath}`, {
       encoding: "utf-8",
@@ -48,8 +48,18 @@ describe("autodoc", () => {
     expect(result).toMatch(expectedFoo);
   });
 
+  it("can extract a schema that is split across files", () => {
+    const fixture = __dirname + "/fixtures/split-module.tsx";
+    const dependency = "./split-out-schema";
+    execSync(`./bin/cli.js -e ${fixture} -o ${readmePath} -d ${dependency}`, {
+      encoding: "utf-8",
+    });
+    const result = fs.readFileSync(readmePath, "utf-8");
+    const expectedFoo = new RegExp(initialReadme + "[\\s\\S]*" + "foo.*tsx");
+    expect(result).toMatch(expectedFoo);
+  });
+
   test.todo("can extract from an ES6 JS module");
-  test.todo("can extract a schema that is split across files");
   test.todo("includes validator explanations");
   test.todo("includes 'description' key");
   test.todo("reasonable formatting for default arrays");
