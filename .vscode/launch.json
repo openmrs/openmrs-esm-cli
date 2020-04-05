@@ -13,6 +13,7 @@
         "node_modules/ts-node/**",
         "node_modules/typescript/**"
       ],
+      // "env": { "TS_NODE_DEBUG": "y" },
       "program": "${workspaceFolder}/bin/cli.js",
       "args": [
         "-e",
@@ -31,6 +32,20 @@
         "node_modules/typescript/**"
       ],
       "cwd": "${workspaceFolder}/../openmrs-esm-login/",
+      "program": "${workspaceFolder}/bin/cli.js",
+      "args": ["-e", "src/root.component.tsx"]
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Launch from Patient Chart",
+      "skipFiles": [
+        "<node_internals>/**",
+        "node_modules/ts-node/**",
+        "node_modules/typescript/**"
+      ],
+      // "env": { "TS_NODE_DEBUG": "y" },
+      "cwd": "${workspaceFolder}/../openmrs-esm-patient-chart/",
       "program": "${workspaceFolder}/bin/cli.js",
       "args": ["-e", "src/root.component.tsx"]
     }

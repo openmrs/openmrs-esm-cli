@@ -1,4 +1,5 @@
 {
+  "typeCheck": false,
   "compilerOptions": {
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
