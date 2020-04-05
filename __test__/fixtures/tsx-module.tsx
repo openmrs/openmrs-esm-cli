@@ -15,4 +15,7 @@ defineConfigSchema("tsx-module", {
       validator((x) => true, "it's ok"),
     ],
   },
+  qux: {
+    default: "quxxy",
+  },
 });
