@@ -28,15 +28,26 @@ describe("autodoc documentation", () => {
   });
 
   it("includes out of the box validators", () => {
-    expect(result).toMatch(/- must be a string/i);
-    expect(result).toMatch(/- must be a boolean/i);
+    expect(result).toMatch(/must be a string\./i);
+    expect(result).toMatch(/must be a boolean\./i);
   });
 
   it("includes custom validators", () => {
     expect(result).toMatch(/it's ok/);
   });
 
-  test.todo("includes 'description' key");
+  it("includes higher-level validators", () => {
+    expect(result).toMatch(/bar[\s\S]*higher-level validator/);
+  });
+
+  it("includes 'description' key", () => {
+    expect(result).toMatch("The most beautiful string you can think of");
+  });
+
+  it("includes higher-level descriptions", () => {
+    expect(result).toMatch(/bar[\s\S]*higher-level description/);
+  });
+
   test.todo("reasonable formatting for default arrays");
 });
 
@@ -61,18 +72,18 @@ describe("autodoc capabilities", () => {
     expect(result).toMatch(expectedFoo);
 
     // we modify the config schema a little bit
-    execSync('sed -i "s/foo/bar/" ' + fixture);
+    execSync('sed -i "s/foo/doof/" ' + fixture);
     try {
       execSync(`./bin/cli.js -e ${fixture} -o ${readmePath}`, {
         encoding: "utf-8",
       });
       const result = fs.readFileSync(readmePath, "utf-8");
-      const expectedBar = new RegExp(initialReadme + "[\\s\\S]*" + "bar.*tsx");
+      const expectedBar = new RegExp(initialReadme + "[\\s\\S]*" + "doof.*tsx");
       expect(result).toMatch(expectedBar);
       expect(result).not.toMatch(expectedFoo);
     } finally {
       // we change it back
-      execSync('sed -i "s/bar/foo/" ' + fixture);
+      execSync('sed -i "s/doof/foo/" ' + fixture);
     }
   });
 
