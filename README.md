@@ -1,6 +1,6 @@
-# openmrs-esm-config-cli
+# openmrs-esm-cli
 
-Scripts supporting openmrs-esm-module-config.
+Node scripts supporting OpenMRS Microfrontends.
 
 ## config-autodoc
 
