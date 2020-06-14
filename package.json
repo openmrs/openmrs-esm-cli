@@ -1,5 +1,5 @@
 {
-  "name": "@openmrs/config-cli",
+  "name": "@openmrs/esm-cli",
   "version": "1.2.0",
   "description": "Generates documentation about module configurability",
   "main": "index.js",
