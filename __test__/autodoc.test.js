@@ -2,7 +2,13 @@ import { execSync } from "child_process";
 import fs from "fs";
 import rimraf from "rimraf";
 
-describe("autodoc documentation", () => {
+describe("autodoc module", () => {
+  it("can be required", () => {
+    require("../lib/autodoc");
+  });
+});
+
+describe("autodoc executable", () => {
   const tempDir = __dirname + "/temp";
   const readmePath = tempDir + "/README.md";
   const initialReadme = "# My Module\n\nIt is so beautiful\n";

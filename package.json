@@ -13,7 +13,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "pretty-quick --staged && concurrently '$npm_execpath run lint' '$npm_execpath run test'"
+      "pre-commit": "pretty-quick --staged && concurrently 'npm:lint' 'npm:test'"
     }
   },
   "author": "Brandon Istenes (bistenes@pih.org)",
