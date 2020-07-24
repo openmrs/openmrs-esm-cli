@@ -29,32 +29,38 @@ describe("autodoc executable", () => {
     expect(result).toMatch(initialReadme);
   });
 
-  it("includes the name of the key", () => {
-    expect(result).toMatch(/-.*foo/);
+  it("matches the expected output", () => {
+    console.log(result);
+    expect(result).toMatch(
+`"@openmrs/esm-robots": {
+  "robots": [
+    // a list of the robots that will be operating on your ship
+    // at least one robot is required
+    {
+      "name": "R2-D2",  // required
+        // the robot's full name
+        // robots must have numbers in their names
+      "homeworld": "Naboo"  // default: null
+        // the planet of origin, if known
+        // must be a string
+      },
+      { "name": "C-3PO", "homeworld": "Tatooine" }
+  ],
+  "hologram": {
+    "color": true
+      // whether the hologram supports color display
+  },
+  "virtualProvider": {
+    // the care provider to be projected into the clinic
+    "name": {
+      "given": ["Qui", "Gon"]
+        // any given names
+        // each element must be a string
+    }
+  }
+}`
+    );
   });
-
-  it("includes out of the box validators", () => {
-    expect(result).toMatch(/must be a string\./i);
-    expect(result).toMatch(/must be a boolean\./i);
-  });
-
-  it("includes custom validators", () => {
-    expect(result).toMatch(/it's ok/);
-  });
-
-  it("includes higher-level validators", () => {
-    expect(result).toMatch(/bar[\s\S]*higher-level validator/);
-  });
-
-  it("includes 'description' key", () => {
-    expect(result).toMatch("The most beautiful string you can think of");
-  });
-
-  it("includes higher-level descriptions", () => {
-    expect(result).toMatch(/bar[\s\S]*higher-level description/);
-  });
-
-  test.todo("reasonable formatting for default arrays");
 });
 
 describe("autodoc capabilities", () => {
