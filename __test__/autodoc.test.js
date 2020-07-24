@@ -30,36 +30,34 @@ describe("autodoc executable", () => {
   });
 
   it("matches the expected output", () => {
-    console.log(result);
+    expect(result).toMatch(`"@openmrs/esm-robots": {`);
+    expect(result).toMatch(`"robots": [`);
     expect(result).toMatch(
-`"@openmrs/esm-robots": {
-  "robots": [
-    // a list of the robots that will be operating on your ship
-    // at least one robot is required
-    {
-      "name": "R2-D2",  // required
-        // the robot's full name
-        // robots must have numbers in their names
-      "homeworld": "Naboo"  // default: null
-        // the planet of origin, if known
-        // must be a string
-      },
-      { "name": "C-3PO", "homeworld": "Tatooine" }
-  ],
-  "hologram": {
-    "color": true
-      // whether the hologram supports color display
-  },
-  "virtualProvider": {
-    // the care provider to be projected into the clinic
-    "name": {
-      "given": ["Qui", "Gon"]
-        // any given names
-        // each element must be a string
-    }
-  }
-}`
+      /A list of the robots that will be operating on your ship/i
     );
+    expect(result).toMatch(/At least one robot is required/i);
+    expect(result).toMatch(`"name": "R2-D2",  // required`);
+    expect(result).toMatch(/The robot's full name/i);
+    expect(result).toMatch(/Robots must have numbers in their names/i);
+    expect(result).toMatch(`"homeworld": "Naboo"  // default: null`);
+    expect(result).toMatch(/must be a string/i);
+    expect(result).toMatch(`{"name": "C-3PO", "homeworld": "Tatooine"}`);
+    const hologramLines = [
+      `"hologram": {`,
+      `"color": true`,
+      `// Whether the hologram supports color display`,
+      `},`,
+    ].join("\n\\s*");
+    expect(result).toMatch(new RegExp(hologramLines));
+    const providerLines = [
+      `"virtualProvider": {`,
+      `// The care provider to be projected into the clinic`,
+      `"name": {`,
+      `"given": \\["Qui", "Gon"\\]`,
+      `// Any given names`,
+      `// Each element must be a string.`,
+    ].join("\n\\s*");
+    expect(result).toMatch(new RegExp(providerLines));
   });
 });
 
@@ -80,22 +78,26 @@ describe("autodoc capabilities", () => {
       encoding: "utf-8",
     });
     const result = fs.readFileSync(readmePath, "utf-8");
-    const expectedFoo = new RegExp(initialReadme + "[\\s\\S]*" + "foo.*tsx");
-    expect(result).toMatch(expectedFoo);
+    const expectedRobots = new RegExp(
+      initialReadme + "[\\s\\S]*" + '"robots": \\['
+    );
+    expect(result).toMatch(expectedRobots);
 
     // we modify the config schema a little bit
-    execSync('sed -i "s/foo/doof/" ' + fixture);
+    execSync('sed -i "s/robots/androids/" ' + fixture);
     try {
       execSync(`./bin/cli.js -e ${fixture} -o ${readmePath}`, {
         encoding: "utf-8",
       });
       const result = fs.readFileSync(readmePath, "utf-8");
-      const expectedBar = new RegExp(initialReadme + "[\\s\\S]*" + "doof.*tsx");
-      expect(result).toMatch(expectedBar);
-      expect(result).not.toMatch(expectedFoo);
+      const expectedAndroids = new RegExp(
+        initialReadme + "[\\s\\S]*" + '"androids": \\['
+      );
+      expect(result).toMatch(expectedAndroids);
+      expect(result).not.toMatch(expectedRobots);
     } finally {
       // we change it back
-      execSync('sed -i "s/doof/foo/" ' + fixture);
+      execSync('sed -i "s/androids/robots/" ' + fixture);
     }
   });
 
