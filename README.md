@@ -1,3 +1,9 @@
+# Defunct
+
+Tooling for the OpenMRS 3 Frontend is located [in openmrs-esm-core](https://github.com/openmrs/openmrs-esm-core/tree/master/packages/tooling).
+
+There is no more documentation generation for configuration. Configuration documentation is now displayed through the Implementer Tools UI.
+
 # openmrs-esm-cli
 
 Node scripts supporting OpenMRS Microfrontends.
